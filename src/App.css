@@ -4,21 +4,24 @@
 
 body {
   background-color: #88F8EA;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   position: relative;
-  display: flex;
+  /* display: flex; */
   justify-content: center;
+  align-items: center;
 }
 
 .mainBox {
-  /* position: absolute; */
+  position: absolute;
   background-color: white;
   border-radius: 50px 50px 50px 50px;
   box-shadow: 5px 5px 20px gray;
   height: 650px;
   width: 500px;
-  padding: 3%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 5%);
 }
 
 .todoBox {
@@ -29,10 +32,18 @@ body {
   background-color: aquamarine;
 }
 
-input[type=text] {
+input {
   border-color: #64E0F1;
+  width: 70%;
+  height: 30%;
 }
 
+.title {
+  position:absolute;
+  right: 0%;
+  color: #6EE9FA;
+  font-weight: bold;
+}
 
 
 
