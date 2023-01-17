@@ -1,0 +1,24 @@
+<%- include("./partials/header")  %>
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="/">Todo_Diary</a>
+</nav>
+
+<div>
+    <h1> Diary Page</h1>
+</div>
+
+
+<div class="container mt-5">
+    <form action="/add/diary" method="POST" class="d-flex">
+        <input type="text" name="title" class="form-control" placeholder="Enter title">
+        <input type="text" name="date" class="form-control" placeholder="Enter date">
+        <input type="text" name="post" class="form-control" placeholder="Enter post">
+        <input type="submit" value="Add diary" class="btn btn-md btn-primary mx-2">
+    </form>
+
+
+</div>
+
+
+
+<%- include("./partials/footer")  %>
