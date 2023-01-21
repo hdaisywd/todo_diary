@@ -1,0 +1,61 @@
+body {
+    background-image: "back.png";
+    background-color: #88f8ea;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+}
+
+#registerText{
+    margin-top: 30%;
+    font-size:  26pt;
+    font-weight: 1000;
+    font-family:"Inika";
+    text-align: center ;
+}
+form label{
+    margin-left: 55px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+.signup{
+    background-image: "back.png";
+    display: flex;
+    width: 100%;
+    height: 80vh;
+}
+.mainBox{
+    position: absolute;
+    background-color: #fff;
+    border-radius: 50px 50px 50px 50px;
+    box-shadow: 5px 5px 20px gray;
+    height: 550px;
+    width: 400px;
+    left: 50%;
+    transform: translate(-50%, 15%);
+}
+.register{
+    margin-top: 0%;
+    display: flex;
+    flex-direction: column;
+}
+
+.input{
+    align-self: center;
+    width: 300px;
+    height: 50px;
+    border: 1px solid black;
+    border-radius: 50px;
+}
+
+button{
+    align-self: center;
+    width: 300px;
+    height: 50px;
+    background-color: #6FEEFF;
+    border: 1px solid black;
+    border-radius: 50;
+    box-shadow: 3px 3px 10px rgb(195, 195, 195);
+    font-weight: 800;
+}

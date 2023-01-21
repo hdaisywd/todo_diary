@@ -1,13 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
+import SignUp from './pages/SignUp';
+import Home from './pages/Home';
+import {Routes, 
+Route, useNavigate, Link} from "react-router-dom";
 
 function App() {
+
   return (
-    <div className="App">
-      <p>
-        지윤님 안녕하세욧 (,,・e・)pー━*＊※*⌒* 뭔가 바뀌면 바꼈다고 떠야 하는 거 아닌가?
-        제발 좀 돼라 ㅜㅜ
-      </p>
+    <div>
+      <Routes>
+        <Route path="/" element={<Home/>}></Route>
+        <Route path="/signUp" element={<SignUp/>}/>
+      </Routes>
     </div>
   );
 }
