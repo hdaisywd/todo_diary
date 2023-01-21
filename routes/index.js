@@ -19,13 +19,21 @@ router.get("/todo", async(req, res) => {
     res.render("todo", {todo: allTodo})
 })
 
-router.get("/register", async(req, res) => {
+router.get("/user", async(req, res) => {
     const allUser = await User.find();
-    res.render("register", {user: allUser})
+    res.render("usesr", {user: allUser})
 })
 
 router.get("/", async(req, res)=> {
     res.render("index")
+})
+
+router.get("/login", async(req,res)=>{
+    res.render("login")
+})
+
+router.get("/register", async(req,res)=>{
+    res.render("register")
 })
 
 
