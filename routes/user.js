@@ -14,22 +14,21 @@ router
 // @access Public
   .post("/register/user", async (req, res) => {
     // req의 body 정보를 사용하려면 server.js에서 따로 설정을 해줘야함
-    const { name, email, password } = req.body;  //나중에 email 제거
+    const { name, password } = req.body;  
 
     try {
-      // email을 비교하여 user가 이미 존재하는지 확인
-      let user = await User.findOne({ email });
+      // name을 비교하여 user가 이미 존재하는지 확인
+      let user = await User.findOne({ name });
 			if (user) {
         return res
           .status(400)
           .json({ errors: [{ msg: "User already exists" }] });
       }
 			
-      // user에 name, email, password 값 할당
+      // user에 name, password 값 할당
       user = new User({
         name,
-        email,
-        password,
+        password
       });
 
       // password를 암호화 하기
@@ -48,15 +47,15 @@ router
 );
 
 //로그인 할때 비밀번호 확인 + jwt토큰 생성
-const verifyUserLogin = async (email,password)=>{
+const verifyUserLogin = async (name,password)=>{
   try {
-      const user = await User.findOne({email}).lean()
+      const user = await User.findOne({name}).lean()
       if(!user){
           return {status:'error',error:'user not found'}
       }
       if(await bcrypt.compare(password,user.password)){
           // creating a JWT token
-          token = jwt.sign({id:user._id,username:user.email,type:'user'},JWT_SECRET,{ expiresIn: '2h'})
+          token = jwt.sign({id:user._id,username:user.name,type:'user'},JWT_SECRET,{ expiresIn: '2h'})
           return {status:'ok',data:token}
       }
       return {status:'error',error:'invalid password'}
@@ -69,9 +68,9 @@ const verifyUserLogin = async (email,password)=>{
 //login 코드
 router
   .post('/login/user',async(req,res)=>{
-  const {email,password}=req.body;
+  const {name,password}=req.body;
   // we made a function to verify our user login
-  const response = await verifyUserLogin(email,password);
+  const response = await verifyUserLogin(name,password);
   if(response.status==='ok'){
       // storing our JWT web token as a cookie in our browser
       res.cookie('token',token,{ maxAge: 2 * 60 * 60 * 1000, httpOnly: true });  // maxAge: 2 hours
