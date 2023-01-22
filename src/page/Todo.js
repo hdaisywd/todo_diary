@@ -1,10 +1,11 @@
 import Nav from 'react-bootstrap/Nav';
+import "./Todo.css";
 
 function Todo(){
     return(
     <div>
         <div className='todoBox'>
-            <h1>ToDoList</h1>
+            <text className='text1'>To Do List</text>
             { [1,2,3].map((data, i)=>
             <div key={i} className='checkList'>
                 <input type="text"></input>

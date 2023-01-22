@@ -1,0 +1,23 @@
+.todoBox {
+    background-color: white;
+}
+
+.text1 {
+    font-size: 50px;
+    font-weight: bold;
+    color: #88F8EA;
+}
+
+/* input[type="text"] {
+    width: 400px;
+    background-color: #88f8eb00;
+} */
+
+input[type="checkbox"] {
+    border-color: #88F8EA;
+}
+
+.checkList {
+    background-color: #88f8eb4a;
+    border-radius: 50px;
+}
