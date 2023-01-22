@@ -3,9 +3,11 @@ import {useDispatch} from 'react-redux';
 import "./main.css";
 import regiserBtn from "./resources/회원가입.png";
 import logo from "./resources/로고.png";
+import Modal from "react-modal";
+import PasswordModal from './PasswordModal';
 function SignUp(){
     //const dispatch = useDispatch();
-
+    const [modalIsOpen, setModalIsOpen] = useState(false);
     const [Id, setId] = useState('');
     const [Password, setPassword] = useState('');
     const [ConfirmPassword, setConfirmPassword] = useState('');
@@ -38,7 +40,8 @@ function SignUp(){
 
   
     return (
-        <div className='signup'>
+    
+    <div className='signup'>
             <div className="mainBox">
                 <h1><img className='logo' alt='logo' src={logo}/></h1>
                 <p id='registerText'>회원 가입</p>
@@ -50,9 +53,11 @@ function SignUp(){
                     <label>비밀번호 확인</label>
                     <input className='input' placeholder="비밀번호를 다시 입력하시오." type='password' value={ConfirmPassword} onChange={onConfirmPasswordHandler}/>
                     <br/>
-                    <button formAction=''>
+                    <button formAction='' onClick={()=>setModalIsOpen(!modalIsOpen)}>
                         <img alt="register" src={regiserBtn}/>
                     </button>
+                    { modalIsOpen === true ? <PasswordModal modal={modalIsOpen} setModal={setModalIsOpen}/> : null}
+
                 </form>
             </div>
         </div>
