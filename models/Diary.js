@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
+const moment = require("moment");
 
 
 const DiarySchema = new mongoose.Schema(
@@ -12,9 +13,12 @@ const DiarySchema = new mongoose.Schema(
     type: String,
     required: true,
   },
-  date: {
+  created_date: {
     type: String,
-    reuqired: true,
+    default:moment().format("YYYY-MM-DD hh:mm:ss")
+  },
+  updated_date: {
+    type: Date
   }
 }
 );
