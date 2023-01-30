@@ -1,10 +1,9 @@
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
-import "./main.css";
 import regiserBtn from "./resources/회원가입.png";
 import logo from "./resources/로고.png";
-import Modal from "react-modal";
 import PasswordModal from './PasswordModal';
+import styled from 'styled-components';
 function SignUp(){
     //const dispatch = useDispatch();
     const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -38,29 +37,76 @@ function SignUp(){
         }
     }
 
-  
+    const SignUp = styled.div`
+    background-color:#64e1f160;
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    `;
+
+    const MainBox = styled.div`
+    align-items: center;
+    position: fixed;
+    background-color: #fff;
+    border-radius: 50px 50px 50px 50px;
+    box-shadow: 5px 5px 20px gray;
+    height: 550px;
+    width: 400px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    `;
+    const Logo = styled.img`
+    position:relative;
+    margin-left: 33%;
+    margin-top: 5%;
+    `;
+
+    const RegisterText = styled.p`
+    margin-top: 0%;
+    font-size:  xx-large;
+    font-weight: bold;
+    color: rgb(150, 150, 150);
+    text-align: center ;
+    `;
+
+    const Register = styled.form`
+    margin-top: 0%;
+    display: flex;
+    flex-direction: column;
+    `;
+
+    const Input = styled.input`
+    align-self: center;
+    width: 65%;
+    height: 45px;
+    border: 1px solid #64e1f17a;
+    border-radius: 10px;
+    `;
+
+    const Button = styled.button`
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    `;
+    
     return (
     
-    <div className='signup'>
-            <div className="mainBox">
-                <h1><img className='logo' alt='logo' src={logo}/></h1>
-                <p id='registerText'>회원 가입</p>
-                <form className="register" onSubmit={onSubmitHandler}>
-                    <label>아이디</label>
-                    <input className='input' placeholder="아이디를 입력하시오." type='id' value={Id} onChange={onIdHandler}/>
-                    <label>비밀번호</label>
-                    <input className='input' placeholder="비밀번호를 입력하시오." type='password' value={Password} onChange={onPasswordHandler}/>
-                    <label>비밀번호 확인</label>
-                    <input className='input' placeholder="비밀번호를 다시 입력하시오." type='password' value={ConfirmPassword} onChange={onConfirmPasswordHandler}/>
+    <SignUp>
+            <MainBox>
+                <Logo className='logo' alt='logo' src={logo}/>
+                <RegisterText>회원 가입</RegisterText>
+                <Register className="register" onSubmit={onSubmitHandler}>
+                    <Input className='input' placeholder="아이디를 입력하시오." type='id' value={Id} onChange={onIdHandler}/><br/>
+                    <Input className='input' placeholder="비밀번호를 입력하시오." type='password' value={Password} onChange={onPasswordHandler}/><br/>
+                    <Input className='input' placeholder="비밀번호를 다시 입력하시오." type='password' value={ConfirmPassword} onChange={onConfirmPasswordHandler}/>
                     <br/>
-                    <button formAction='' onClick={()=>setModalIsOpen(!modalIsOpen)}>
+                    <Button formAction='' onClick={()=>setModalIsOpen(!modalIsOpen)}>
                         <img alt="register" src={regiserBtn}/>
-                    </button>
+                    </Button>
                     { modalIsOpen === true ? <PasswordModal modal={modalIsOpen} setModal={setModalIsOpen}/> : null}
-
-                </form>
-            </div>
-        </div>
+                </Register>
+            </MainBox>
+        </SignUp>
     )
 }
 

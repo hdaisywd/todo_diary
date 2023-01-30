@@ -1,20 +1,57 @@
 import confirmBtn from './resources/confirmBtn.png';
-import "./PasswordModal.css";
+import styled from 'styled-components';
 
-export default function PasswordModal(props) {
 
+function PasswordModal(props) {
+
+    const Overlay = styled.div`
+    background: rgba(49,49,49,0.8);
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    position: fixed;
+    `;
+
+    const ModalContent = styled.div`
+    background-color: #fff;
+    padding: 14px 28px;
+    border-radius:20px;
+    width: 400px;
+    min-width: 400px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.4;
+    `;
+
+    const ErrorMsg = styled.text`
+    font-weight: bold;
+    text-align: center;
+    align-items: center;
+    font-size:24px;
+    color: rgb(150, 150, 150);
+    `;
+
+    const ConfirmBtn = styled.button`
+    background-color: white;
+    border-color: white;
+    border-style: solid;
+    `;
     return(
         <div className='PasswordModal'>
-            <div className='overlay'></div>
-            <div className='modal-content'>
-                <text className='errorMessage'><br/><br/>비밀번호를<br/>
-                    확인해주세요.
-                </text>
+            <Overlay></Overlay>
+            <ModalContent>
+                <ErrorMsg className='errorMessage'><br/><br/>비밀번호를 확인해주세요.
+                </ErrorMsg>
                 <br/>
-                <button className="confirmBtn" onClick={()=>{
+                <ConfirmBtn className="confirmBtn" onClick={()=>{
                     props.setModal(!props.modal)
-                }}><img alt="확인" src={confirmBtn}/></button>
-            </div>
+                }}><img alt="확인" src={confirmBtn}/></ConfirmBtn>
+            </ModalContent>
         </div>
     );
 }
+
+export default PasswordModal;
