@@ -15,7 +15,7 @@ const DiarySchema = new mongoose.Schema(
   },
   created_date: {
     type: String,
-    default:moment().format("YYYY-MM-DD hh:mm:ss")
+    default:moment().format("YYYY-MM-DD")
   },
   updated_date: {
     type: Date

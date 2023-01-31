@@ -32,15 +32,24 @@ const moment = require("moment");
 
 
 //RETRIEVE
-//전체 diary 보여주기
-/*router.get("/diary/list", (req, res) => {
+//전체 diary 출력하기
+/*router.get("/all/diary", (req, res) => {
   Diary.find({})
     .sort("-created_date") // 최근 작성된 다이어리 순으로 정렬
-    .exec((err, posts) => {
+    .exec((err, diary) => {
       if (err) return res.json(err);
-      res.json(Diary);
+      res.json(diary);
     });
 });*/
+
+//특정 다이어리 출력
+router.get("/find/diary/:_id", (req, res) => {
+  const { _id } = req.params;
+  Diary.findOne({ _id }, (err, result) => {
+    if (err) res.json(err);
+    res.json(result);
+  });
+});
 
 
 //CREATE
@@ -49,11 +58,13 @@ router.post("/add/diary", (req, res) => {
   diary.title = req.body.title;
   diary.post = req.body.post;
   // moment 모듈을 사용하여 날짜 포매팅
-  diary.created_date = moment().format("YYYY-MM-DD hh:mm:ss");
+  diary.created_date = moment().format("YYYY-MM-DD");
 
   diary.save((err, result) => {
     if (err) res.json(err);
+    console.log("Successfully added diary!");
     res.json(result);
+    //res.redirect("/diary");
   });
 });
 
@@ -61,7 +72,7 @@ router.post("/add/diary", (req, res) => {
 //UPDATE
 router.put("/update/diary/:_id", (req, res) => {
   const { _id } = req.params;
-  req.body.updated_date = moment().format("YYYY-MM-DD hh:mm:ss");
+  req.body.updated_date = moment().format("YYYY-MM-DD");
   Diary.findOneAndUpdate({ _id},
     req.body,
     (err, result) => {
@@ -83,7 +94,7 @@ router.get("/delete/diary/:_id", (req, res) => {
     Diary.deleteOne({ _id })
       .then(() => {
          console.log("Deleted Diary Successfully!");
-        res.redirect("/");
+        res.redirect("/diary");
       })
       .catch((err) => console.log(err));
    });
