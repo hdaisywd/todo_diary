@@ -10,6 +10,7 @@ import DiaryWrite from './pages/Diary/DiaryWrite';
 import DiaryView from './pages/Diary/DiaryView';
 import Todo from './page/Todo';
 import Home from './page/Home';
+import HomePage from './page/HomePage';
 
 function App() {
 
@@ -19,7 +20,7 @@ function App() {
         <Route index element={<LoginPage/>}/>
         <Route path="/signUp" element={<SignUp/>}/>
         <Route path="/todo" element={<Todo/>}/>
-        <Route path="/home" element={<Home/>}/>
+        <Route path="/home" element={<HomePage/>}/>
         <Route path="/diary" element={<DiaryMain/>}/>
         <Route path="/diary-write" element={<DiaryWrite/>}/>
         <Route path="/diaryView" element={<DiaryView/>}/>

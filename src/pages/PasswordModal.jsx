@@ -6,14 +6,15 @@ function PasswordModal(props) {
 
     const Overlay = styled.div`
     background: rgba(49,49,49,0.8);
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
+    width: 101vw;
+    height: 101vh;
+    left: -140%;
+    top: -18%;
     position: fixed;
     `;
 
     const ModalContent = styled.div`
+    text-align: center;
     background-color: #fff;
     padding: 14px 28px;
     border-radius:20px;
@@ -43,7 +44,7 @@ function PasswordModal(props) {
         <div className='PasswordModal'>
             <Overlay></Overlay>
             <ModalContent>
-                <ErrorMsg className='errorMessage'><br/><br/>비밀번호를 확인해주세요.
+                <ErrorMsg className='errorMessage'><br/>비밀번호를 확인해주세요.<br/>
                 </ErrorMsg>
                 <br/>
                 <ConfirmBtn className="confirmBtn" onClick={()=>{

@@ -42,15 +42,23 @@ body {
     background-color: white;
     border-color: white;
     border-style: solid;
+    
 }
 
 .joinBtn {
     font-weight: bold;
-    color: rgb(150,150,150);;
+    color: rgb(150,150,150);
+    cursor: pointer;
+    
+}
+
+.joinBtn:hover{
+    color: grey;
 }
 
 .title {
     position:fixed;
+    font-size: 25px;
     right: 0%;
     bottom: 0%;
     color: #6EE9FA;

@@ -5,6 +5,7 @@ import DatePicker from "react-datepicker";
 import editBtn from "../resources/수정버튼.png";
 import delBtn from "../resources/삭제버튼.png";
 function DiaryView() {
+
     const Wrapper = styled.div`   
     width: 100vw;
     heignt: 100vh;
@@ -61,17 +62,18 @@ function DiaryView() {
     `;
 
     const Content = styled.div`
-        width: 650px;
-        margin-left: 25px;
-        margin-top: 10px;
-        border-bottom-left-radius: 16px;
-        border-bottom-right-radius: 16px;
-        background: #88F8EA15;
-        border: 1px solid #88F8EA;
-        font-weight: bold;
-        font-color: grey;
-        height: 250px;
-        font-size: 1.4rem;
+    width: 650px;
+    margin-left: 25px;
+    margin-top: 90px;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    background: #88F8EA15;
+    border: 1px solid #88F8EA;
+    font-weight: bold;
+    font-color: grey;
+    height: 250px;
+    font-size: 1.4rem;
+    
     `;
 
     const Button = styled.button`
@@ -84,15 +86,31 @@ function DiaryView() {
     const DivButton = styled.div`
         text-align: center;
     `;
+
+    const DateDiv = styled.div`
+        float: left;
+    `;
+
+    const TextLogo = styled.text`
+    position: fixed;
+    color: #6EE9FA;
+    font-size: 25px;
+    font-weight: bold;
+    right: 10px;
+    bottom: 10px;
+    `;
     return (
     <Wrapper>
         <MainBox>
-            <Diary>Diary</Diary><Title></Title><WrittenDate></WrittenDate><Content></Content>
+            <Diary>Diary</Diary><Title></Title>
+            <DateDiv><WrittenDate></WrittenDate></DateDiv>
+            <Content></Content>
             <DivButton>
                 <Button><img alt="register" src={editBtn}/></Button>
                 <Button><img alt="register" src={delBtn}/></Button>
             </DivButton>
         </MainBox>
+        <TextLogo>오늘의 투다</TextLogo>
     </Wrapper>
     )
 }

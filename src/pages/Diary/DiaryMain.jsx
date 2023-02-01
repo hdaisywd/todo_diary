@@ -4,6 +4,7 @@ import DiaryList from "./DiaryList";
 import addBtn from "../resources/추가 버튼.png";
 import { useNavigate } from "react-router-dom";
 import "../resources/back.css";
+import Navbar from "../../page/Navbar";
 
 function DiaryMain(){
 
@@ -19,7 +20,9 @@ function DiaryMain(){
     
     const MainBox = styled.div`
     position: fixed;
-    top: 15%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     border-radius: 0px 0px 50px 50px;
     box-shadow: 5px 5px 20px gray;
     height: 550px;
@@ -30,7 +33,7 @@ function DiaryMain(){
     const Diary = styled.p`
         color: #88F8EA;
         font-weight: 900;
-        font-size: 30pt;
+        font-size: 45px;
         text-align: center;
         padding-top: 30px;
     `;
@@ -44,7 +47,16 @@ function DiaryMain(){
     background-color: rgba(255, 255, 255,0);
     border: none;
     position: fixed;
-    right: 30%;
+    right: 5%;
+    `;
+
+    const TextLogo = styled.text`
+    position: fixed;
+    color: #6EE9FA;
+    font-size: 25px;
+    font-weight: bold;
+    right: 10px;
+    bottom: 10px;
     `;
 
     const list = [
@@ -58,6 +70,9 @@ function DiaryMain(){
     const navigate = useNavigate();
 
     return (
+        <>
+        <Navbar></Navbar>
+
             <Wrapper>
                 <MainBox>
                     <Diary>Diary</Diary>
@@ -68,7 +83,11 @@ function DiaryMain(){
                         }}><img alt="register" src={addBtn}/></Button>
                     </List>
                 </MainBox>
+                
             </Wrapper>
+            <TextLogo>오늘의 투다</TextLogo>
+
+        </>
     );
 }
 

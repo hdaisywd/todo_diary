@@ -3,6 +3,7 @@ import "./Todo.css";
 import TodoList from "./TodoList.js";
 import Task from "./Task.js";
 import { useState, useRef } from 'react';
+import Navbar from './Navbar';
 
 function Todo(){
 
@@ -12,6 +13,8 @@ function Todo(){
 
     return(
     <div>
+        <Navbar></Navbar>
+
         <div className='todoBox'>
             { todoState === true? <TodoList setTodoState={setTodoState} todoList={todoList} setTodoList={setTodoList}/> : 
             <Task setTodoState={setTodoState} setTodoList={setTodoList} todoList={todoList} useID={useID} setUseID={setUseID}/> }

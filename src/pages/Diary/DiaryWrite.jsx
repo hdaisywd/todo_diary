@@ -83,6 +83,7 @@ function DiaryWrite(){
         height: 250px;
         font-size: 1.4rem;
     `;
+    
     const Button = styled.button`
     background-color: rgba(255, 255, 255,0);
     border: none;
@@ -92,6 +93,15 @@ function DiaryWrite(){
     
     const DivButton = styled.div`
         text-align: center;
+    `;
+
+    const TextLogo = styled.text`
+    position: fixed;
+    color: #6EE9FA;
+    font-size: 25px;
+    font-weight: bold;
+    right: 10px;
+    bottom: 10px;
     `;
 
     return(
@@ -114,6 +124,7 @@ function DiaryWrite(){
                 </DivButton>
 
             </MainBox>
+            <TextLogo>오늘의 투다</TextLogo>
         </Wrapper>
     )
 }

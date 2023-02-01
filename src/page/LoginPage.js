@@ -1,6 +1,6 @@
 import './LoginPage.css';
 import loginBtn from './login.png';
-import logo from './logo.png';
+import logo from '../pages/resources/로고.png';
 import LoginErrorModal from '../Modal/LoginErrorModal.js';
 import { useState } from "react";
 import {useNavigate} from  "react-router-dom";
@@ -12,7 +12,7 @@ export default function LoginPage(){
     return (
     <div className='Login'>   
         <div className='mainBox'>
-        <h1 className='logo'><img alt='logo' src={logo}/></h1><br/>
+        <br/><h1 className='logo'><img alt='logo' src={logo}/></h1><br/>
         <p><text className='welcome'>환영합니다!</text></p><br/>
         <p><input type="text" className='id' placeholder='아이디를 입력하세요.'></input></p>
         <p><input className='id' type="password" placeholder='비밀번호를 입력하세요.'></input></p>
@@ -24,7 +24,7 @@ export default function LoginPage(){
             navigate("/signup");
         }}>회원가입</text>
         </div>
-        <text className='title'><h2><b>오늘의 투다</b></h2></text>
+        <text className='title'><b>오늘의 투다</b></text>
         { modal === true ? <LoginErrorModal modal={modal} setModal={setModal}/> : null}
     </div>
     )

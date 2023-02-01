@@ -38,7 +38,6 @@ function SignUp(){
     }
 
     const SignUp = styled.div`
-    background-color:#64e1f160;
     display: flex;
     width: 100%;
     height: 100vh;
@@ -58,8 +57,8 @@ function SignUp(){
     `;
     const Logo = styled.img`
     position:relative;
-    margin-left: 33%;
-    margin-top: 5%;
+    margin-left: 34%;
+    margin-top: 6%;
     `;
 
     const RegisterText = styled.p`
@@ -88,6 +87,15 @@ function SignUp(){
     background-color: rgba(255, 255, 255, 0);
     border: none;
     `;
+
+    const TextLogo = styled.text`
+    position: fixed;
+    color: #6EE9FA;
+    font-size: 25px;
+    font-weight: bold;
+    right: 10px;
+    bottom: 10px;
+    `;
     
     return (
     
@@ -106,6 +114,7 @@ function SignUp(){
                     { modalIsOpen === true ? <PasswordModal modal={modalIsOpen} setModal={setModalIsOpen}/> : null}
                 </Register>
             </MainBox>
+            <TextLogo>오늘의 투다</TextLogo>
         </SignUp>
     )
 }

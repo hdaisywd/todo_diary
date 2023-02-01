@@ -2,12 +2,9 @@
     position: fixed;
     background: rgba(49,49,49,0.8);
     width: 101vw;
-    height: 100vh;
-    top: -27%;
-    left: -65%;
-    right: 0;
-    bottom: 0;
-    
+    height: 101vh;
+    left: -57%;
+    top: -18%;
 }
 
 .modal-content {

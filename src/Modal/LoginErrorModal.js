@@ -6,9 +6,9 @@ export default function LoginErrorModal(props) {
     return(
         <>
         <div className='LoginErrorModal'>
-            <div className='overlay'></div>
+            <div className='overlay_1'></div>
             <div className='modal-content'>
-                <text className='errorMessage'><br/><br/>아이디 혹은 비밀번호가<br/>
+                <text className='errorMessage'><br/>아이디 혹은 비밀번호가<br/>
                     일치하지 않습니다.
                 </text>
                 <br/>
