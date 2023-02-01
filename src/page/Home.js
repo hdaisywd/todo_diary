@@ -3,7 +3,7 @@ import Todo from './Todo.js'
 import { Routes, Route, Link, useNavigate, Outlet} from 'react-router-dom'
 import './Todo.css';
 import './Home.css';
-import logo from '../logo.png';
+import logo from '../page/logo.png';
 
 function Home(){
     let navigate = useNavigate()
@@ -37,7 +37,7 @@ function Home(){
         </>
         }>
         </Route>
-            <Route path="/todo" element={<Todo/>}></Route>
+            {/* <Route path="/todo" element={<Todo/>}></Route> */}
         </Routes>
     </div>
     )

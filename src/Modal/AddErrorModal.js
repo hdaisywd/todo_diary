@@ -1,4 +1,4 @@
-import confirmBtn from '../confirmBtn.png';
+import confirmBtn from '../page/confirmBtn.png';
 import "./LoginErrorModal.css";
 
 export default function AddErrorModal(props) {
