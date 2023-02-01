@@ -1,0 +1,23 @@
+<%- include("./partials/header")  %>
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="/">Todo_Diary</a>
+</nav>
+
+<div>
+        <h1>Login Page</h1>
+</div>
+
+
+<div class="container mt-5">
+    <form action="/login/user" method="POST" class="d-flex">
+        <!-- <input type="text" name="email" class="form-control" placeholder="Enter email"> -->
+        <input type="text" name="name" class="form-control" placeholder="Enter name">
+        <input type="text" name="password" class="form-control" placeholder="Enter password">
+        <input type="submit" value="Login" class="btn btn-md btn-primary mx-2">
+    </form>
+
+</div>
+
+
+
+<%- include("./partials/footer")  %>
