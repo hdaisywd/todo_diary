@@ -2,10 +2,14 @@ import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 import DatePicker from "react-datepicker";
 import confirmBtn from "../resources/확인버튼.png";
-import cancleBtn from "../resources/취소버튼.png";
+import cancelBtn from "../resources/취소버튼.png";
 import "../resources/back.css";
+import "react-datepicker/dist/react-datepicker.css";
+import { useNavigate } from "react-router-dom";
+
 
 function DiaryWrite(){
+    const navigate = useNavigate();
     const [writtenDate, setWrittenDate] = useState(new Date());
     const Wrapper = styled.div`   
     width: 100vw;
@@ -49,7 +53,9 @@ function DiaryWrite(){
         font-size: 1.4rem;
         float: left;
     `;
-
+    const DateDiv = styled.div`
+        float: left;
+    `;
     const WrittenDate = styled(DatePicker)`
         width: 200px;
         border-top-right-radius: 16px;
@@ -61,6 +67,7 @@ function DiaryWrite(){
         border: 1px solid #88F8EA;
         margin-top: 15px;
         text-color: grey;
+
     `;
 
     const Content = styled.textarea`
@@ -92,14 +99,18 @@ function DiaryWrite(){
             <MainBox>
                 <Diary>Diary</Diary>
                 <Title placeholder="제목을 입력하세요."></Title>
-                <WrittenDate selected={writtenDate}
-                      onChange={(date) => setWrittenDate(date)}
-                      dateFormat="yyyy.MM.dd"
-                      />
+                <DateDiv>
+                    <WrittenDate selected={writtenDate}
+                        onChange={(date) => setWrittenDate(date)}
+                        dateFormat="yyyy.MM.dd"
+                        />
+                </DateDiv>
                 <Content placeholder="내용을 입력하세요."></Content>
                 <DivButton>
-                    <Button><img alt="register" src={confirmBtn}/></Button>
-                    <Button><img alt="register" src={cancleBtn}/></Button>
+                    <Button type="submit"><img alt="confirm" src={confirmBtn}/></Button>
+                    <Button onClick={() => {
+                            navigate("/diary");
+                        }}><img alt="cancel" src={cancelBtn}/></Button>
                 </DivButton>
 
             </MainBox>
