@@ -72,11 +72,11 @@ input[type=checkbox] + label:before {
 }
 
 input[type=checkbox]:checked + label:before{
-    content: "\2714";
+    content: "\2713";
     text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);  
     font-size: 18px; 
     font-weight:600; 
-    color: #fff;  
+    color: white;  
     background:#88f8ebbd;
     text-align: center;   
 }

@@ -1,43 +1,11 @@
 import React, {useState} from 'react';
 // import {useDispatch} from 'react-redux';
-import regiserBtn from "./resources/회원가입.png";
+import registerBtn from "./resources/회원가입.png";
 import logo from "./resources/로고.png";
 import PasswordModal from './PasswordModal';
 import styled from 'styled-components';
-function SignUp(){
-    //const dispatch = useDispatch();
-    const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [Id, setId] = useState('');
-    const [Password, setPassword] = useState('');
-    const [ConfirmPassword, setConfirmPassword] = useState('');
 
-    const onIdHandler = (event) => {
-        setId(event.currentTarget.value);
-    }
-
-    const onPasswordHandler = (event) => {
-        setPassword(event.currentTarget.value);
-    }
-
-    const onConfirmPasswordHandler = (event) =>{
-        setConfirmPassword(event.currentTarget.value);
-    }
-
-    const onSubmitHandler = (event) => {
-        event.preventDefault();
-
-        if(Password !== ConfirmPassword){
-            return alert('비밀번호를 다시 확인해주세요.');
-        }
-
-        let body = {
-            id: Id,
-            password: Password,
-            confirmpassword: ConfirmPassword,
-        }
-    }
-
-    const SignUp = styled.div`
+const SignUP = styled.div`
     display: flex;
     width: 100%;
     height: 100vh;
@@ -88,7 +56,7 @@ function SignUp(){
     border: none;
     `;
 
-    const TextLogo = styled.text`
+    const TextLogo = styled.p`
     position: fixed;
     color: #6EE9FA;
     font-size: 25px;
@@ -97,9 +65,44 @@ function SignUp(){
     bottom: 10px;
     `;
     
+function SignUp(){
+    //const dispatch = useDispatch();
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [Id, setId] = useState('');
+    const [Password, setPassword] = useState('');
+    const [ConfirmPassword, setConfirmPassword] = useState('');
+
+    const onIdHandler = (event) => {
+        setId(event.currentTarget.value);
+    }
+
+    const onPasswordHandler = (event) => {
+        setPassword(event.currentTarget.value);
+    }
+
+    const onConfirmPasswordHandler = (event) =>{
+        setConfirmPassword(event.currentTarget.value);
+    }
+
+    const onSubmitHandler = (event) => {
+        event.preventDefault();
+
+        if(Password !== ConfirmPassword){
+            return alert('비밀번호를 다시 확인해주세요.');
+        }
+
+        let body = {
+            id: Id,
+            password: Password,
+            confirmpassword: ConfirmPassword,
+        }
+    }
+
+    
+    
     return (
     
-    <SignUp>
+        <SignUP>
             <MainBox>
                 <Logo className='logo' alt='logo' src={logo}/>
                 <RegisterText>회원 가입</RegisterText>
@@ -109,13 +112,13 @@ function SignUp(){
                     <Input className='input' placeholder="비밀번호를 다시 입력하시오." type='password' value={ConfirmPassword} onChange={onConfirmPasswordHandler}/>
                     <br/>
                     <Button formAction='' onClick={()=>setModalIsOpen(!modalIsOpen)}>
-                        <img alt="register" src={regiserBtn}/>
+                        <img alt="register" src={registerBtn}/>
                     </Button>
                     { modalIsOpen === true ? <PasswordModal modal={modalIsOpen} setModal={setModalIsOpen}/> : null}
                 </Register>
             </MainBox>
             <TextLogo>오늘의 투다</TextLogo>
-        </SignUp>
+        </SignUP>
     )
 }
 

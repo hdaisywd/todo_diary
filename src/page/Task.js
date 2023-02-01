@@ -20,7 +20,7 @@ function Task(props){
                     if(e.target.value !== null){
                         todoData = e.target.value;
                         copy = [...props.todoList];
-                        copy.push({id:0, text:todoData, checked:false})
+                        copy.push({id:0, text:todoData, checked:true})
                         // copy.push(todoData);
                     }                          
                 }}></input>
