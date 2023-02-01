@@ -1,0 +1,16 @@
+.text_Home {
+    color: #88F8EA;
+    font-size: 45px;
+    font-weight: bold;
+}
+
+.text_Welcome {
+    color: #88F8EA;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.logo_img {
+    width: 120px;
+    height: 120px;
+}

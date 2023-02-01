@@ -1,21 +1,22 @@
 import Nav from 'react-bootstrap/Nav';
 import "./Todo.css";
+import TodoList from "./TodoList.js";
+import Task from "./Task.js";
+import { useState, useRef } from 'react';
 
 function Todo(){
+
+    const [todoState, setTodoState] = useState(true);
+    const [todoList, setTodoList] = useState([]);
+    const [useID, setUseID] = useState(0);
+
     return(
     <div>
         <div className='todoBox'>
-            <text className='text1'>To Do List</text>
-            { [1,2,3].map((data, i)=>
-            <div key={i} className='checkList'>
-                <input type="text"></input>
-                <input type="checkbox"></input>    
-                <button>X</button>
-            </div>
-            )
-            } 
-        <button>ADD</button>  
+            { todoState === true? <TodoList setTodoState={setTodoState} todoList={todoList} setTodoList={setTodoList}/> : 
+            <Task setTodoState={setTodoState} setTodoList={setTodoList} todoList={todoList} useID={useID} setUseID={setUseID}/> }
         </div>
+    <text className='text_title'>오늘의 투다</text>
     </div>
     )
 }

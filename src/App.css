@@ -30,7 +30,7 @@ body {
   color: rgb(150,150,150);
 }
 
-input {
+.id {
   border-color: #64e1f17a;
   border-radius: 10px;
   border-style: solid;
