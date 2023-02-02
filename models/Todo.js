@@ -8,6 +8,10 @@ const TodoSchema = new mongoose.Schema(
     type: String,
     required: true,
     timestamps: true,
+  },
+  due_date: {
+    type: String,
+    required: true,
   }
 }
 );

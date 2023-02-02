@@ -9,7 +9,7 @@ const User = require("../models/User");
 //     res.render("index", {todo: allTodo})
 // })
 
-router.get("/diary", async(req, res) => {
+router.get("/diary", /*로그인했니,*/ async(req, res) => {
    Diary.find({})
     .sort("-created_date") // 최근 작성된 다이어리 순으로 정렬
     .exec((err, Diary) => {
@@ -27,7 +27,14 @@ router.get("/diary", async(req, res) => {
     //res.render("diary", {Diary: allDiary});  //{데이터이름표: 전송할 데이터}
     //res.render("diary",{diary: allDiary});
 });
-
+/*function 로그인했니(req,res,next){
+    if(req.user){
+        next()
+    }else{
+        res.send("로그인안하셨는데요?")
+    }
+}
+*/
 router.get("/todo", async(req, res) => {
     const allTodo = await Todo.find();
     res.render("todo", {todo: allTodo})
@@ -39,16 +46,19 @@ router.get("/user", async(req, res) => {
 });
 
 router.get("/", async(req, res)=> {
-    res.render("index")
-});
+    res.render("index");
+ });
 
-router.get("/login", async(req,res)=>{
+router.post("/login", async(req,res)=>{
     res.render("login")
 });
 
-router.get("/register", async(req,res)=>{
+router.post("/register", async(req,res)=>{
     res.render("register")
 });
+
+
+
 
 
 module.exports = router;

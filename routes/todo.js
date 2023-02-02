@@ -5,7 +5,7 @@ const Todo = require("../models/Todo");
 router
 
 
-
+//CREATE
 //<form action="/add/todo" method="POST" class="d-flex">
   .post("/add/todo", (req, res) => {
     const { todo } = req.body;
@@ -21,6 +21,27 @@ router
       .catch((err) => console.log(err));
   })
 
+  //READ
+  .get("/find/todo/:_id", (req, res) => {
+    const {_id} = req.params;
+    Todo.findOne({_id}, (err, result) => {
+      if(err) res.json(err);
+      res.json(result);
+    })
+  })
+
+  //UPDATE
+  .put("/update/todo/:_id", (req, res)=> {
+    const{_id} = req.params;
+    Todo.findOneAndUpdate({_id}, 
+      req.body,
+      (err, result)=> {
+        if (err) res.json(result);
+        res.json({message: "todo updated"});
+      })
+  })
+
+  //DELETE
   // <a href="/delete/todo/<%= todos._id %>"
   .get("/delete/todo/:_id", (req, res) => {
     const { _id } = req.params;

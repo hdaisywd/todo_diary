@@ -7,92 +7,100 @@ const jwt= require("jsonwebtoken");
 //get our urls and secrets
 const JWT_SECRET = process.env.SECRET_KEY;
 
+const saltRounds = 10;
+
 //register 코드
 router 
 // @route  POST api/register
 // @desc   Register user
 // @access Public
-  .post("/register/user", async (req, res) => {
+  .post("/register/user", function (req, res, next) {
     // req의 body 정보를 사용하려면 server.js에서 따로 설정을 해줘야함
-    const { name, password } = req.body;  
-
-    try {
-      // name을 비교하여 user가 이미 존재하는지 확인
-      let user = await User.findOne({ name });
-			if (user) {
-        return res
-          .status(400)
-          .json({ errors: [{ msg: "User already exists" }] });
-      }
-			
-      // user에 name, password 값 할당
-      user = new User({
-        name,
-        password
-      });
-
-      // password를 암호화 하기
-      const salt = await bcrypt.genSalt(10);
-      user.password = await bcrypt.hash(password, salt);
-
-      await user.save(); // db에 user 저장
-
-      res.redirect("/");
-      console.log("Registered Successfully!");
-    } catch (error) {
-      console.error(error.message);
-      res.status(500).send("Server Error");
+    const{name, password, pwc} = req.body;
+    let user = new User(req.body);
+    if(user.password !== user.pwc){
+      return res.send("Your password and password confirmation have to be same");
     }
-  }
-);
 
-//로그인 할때 비밀번호 확인 + jwt토큰 생성
-const verifyUserLogin = async (name,password)=>{
-  try {
-      const user = await User.findOne({name}).lean()
-      if(!user){
-          return {status:'error',error:'user not found'}
+     User.findOne({name}, function(err,docs){
+      if(err) throw err;  
+      else if(docs == null){
+        if(user.name&&user.password&&user.pwc){
+          return next();
+        }
+        else return res.send("please enter all the blanks");
       }
-      if(await bcrypt.compare(password,user.password)){
-          // creating a JWT token
-          token = jwt.sign({id:user._id,username:user.name,type:'user'},JWT_SECRET,{ expiresIn: '2h'})
-          return {status:'ok',data:token}
+      else{
+        return res.send("Your entered name already exists.");
       }
-      return {status:'error',error:'invalid password'}
-  } catch (error) {
-      console.log(error);
-      return {status:'error',error:'timed out'}
-  }
-};
+     });
+    });
+
+    router.post("/register/user", function (req, res){
+      let user = new User(req.body);
+      bcrypt.genSalt(saltRounds, function(err, salt){
+        if(err) throw err;
+        bcrypt.hash(user.password, salt, function(err, hash){
+          if(err) throw err;
+          user.password = hash;
+          user.save();
+          return res.send("You have just created your new account!")
+        })
+      })
+
+    });
+    
+
 
 //login 코드
 router
-  .post('/login/user',async(req,res)=>{
-  const {name,password}=req.body;
-  // we made a function to verify our user login
-  const response = await verifyUserLogin(name,password);
-  if(response.status==='ok'){
-      // storing our JWT web token as a cookie in our browser
-      res.cookie('token',token,{ maxAge: 2 * 60 * 60 * 1000, httpOnly: true });  // maxAge: 2 hours
-      console.log("Log in succeeded!");
-      res.redirect('/');
-  }else{
-      console.log("Log is not possible!");
-      res.json(response);
-  }
+  .post('/login/user',function(req,res,next){
+  const {name,password,pwc}=req.body;
+  console.log('req.body: ', req.body);
+    let user = new User(req.body);
+    User.findOne({name}, function(err, docs) {
+        if(err) throw err;
+        else if(docs == null) { // Entered ID does not exist.
+            return console.log('Entered ID does not exist.');
+        } else {  // when entered ID matches.
+            bcrypt.compare(user.password, docs.password, function (err, answer) {
+                if (err) throw err;
+                if(answer) {
+                    req.user = docs;
+                    return next();
+                } else {
+                    return res.send('Your password does not match with your ID.');
+                }
+            })
+        }
+    });
 });
 
-const verifyToken = (token)=>{
-  try {
-      const verify = jwt.verify(token,JWT_SECRET);
-      if(verify.type==='user'){return true;}
-      else{return false};
-  } catch (error) {
-      console.log(JSON.stringify(error),"error");
-      return false;
-  }
-};
+router
+  .post('/login/user',function(req,res){
+    const docs = req.user;
+    const payload = { // putting data into a payload
+        docs,
+    };
+    // generating json web token and sending it
+    jwt.sign(
+    payload, // payload into jwt.sign method
+    JWT_SECRET, // secret key value
+    { expiresIn: "30m" }, // token expiration time
+    (err, token) => {
+        if (err) throw err;
+        else {
+            return res
+            .cookie('user', token,{maxAge:30*60 * 1000}) // 1000 is a sec
+            .send("Log in succeeded!")
+            .end();
+            
+        }
+    });
+});
 
 
 
-module.exports = router; // export
+
+
+module.exports = router; // export, 다른 파일에서도 사용할 수 있도록

@@ -11,6 +11,10 @@ const UserSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
+  },
+  pwc:{   // 비밀번호 재확인
+    type: String,
+    required: true
   }
 });
 
