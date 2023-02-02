@@ -9,8 +9,21 @@ import DiaryWrite from './pages/Diary/DiaryWrite';
 import DiaryView from './pages/Diary/DiaryView';
 import Todo from './page/Todo';
 import HomePage from './page/HomePage';
+import axios from 'axios';
+import React, {useEffect} from 'react';
+
 
 function App() {
+
+  const sendRequest = async() =>{
+    const response = await axios.get('http://localhost:8080');
+    console.log(response);
+    console.log(response.data);
+  };
+
+  useEffect(()=>{
+    sendRequest();
+  });
 
   return (
     <div className='App'>   

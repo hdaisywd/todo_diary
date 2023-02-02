@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
-// import {useDispatch} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import registerBtn from "./resources/회원가입.png";
 import logo from "./resources/로고.png";
 import PasswordModal from './PasswordModal';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+import { registerUser } from '../_actions/user_action';
 
 const SignUP = styled.div`
     display: flex;
@@ -66,7 +68,9 @@ const SignUP = styled.div`
     `;
     
 function SignUp(){
-    //const dispatch = useDispatch();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [Id, setId] = useState('');
     const [Password, setPassword] = useState('');
@@ -94,9 +98,16 @@ function SignUp(){
         let body = {
             id: Id,
             password: Password,
-            confirmpassword: ConfirmPassword,
         }
-    }
+
+        dispatch(registerUser(body)).then((response) =>{{
+            if(response.payload.success){
+                navigate("/");
+            } else {
+                alert("회원가입에 실패했습니다.");
+            }
+        }});
+    };
 
     
     
