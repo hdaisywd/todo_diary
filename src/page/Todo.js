@@ -10,6 +10,7 @@ function Todo(){
     const [todoState, setTodoState] = useState(true);
     const [todoList, setTodoList] = useState([]);
     const [useID, setUseID] = useState(0);
+    //const nextID = useRef(5);
 
     return(
     <div>

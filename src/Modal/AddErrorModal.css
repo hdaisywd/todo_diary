@@ -1,13 +1,13 @@
-.overlay {
+.overlay_1 {
     position: fixed;
     background: rgba(49,49,49,0.8);
     width: 101vw;
     height: 101vh;
     left: -57%;
-    top: -18%;
+    top: -19%;
 }
 
-.modal-content {
+.modal_content {
     position: fixed;
     top: 50%;
     left: 50%;

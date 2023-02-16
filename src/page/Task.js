@@ -3,12 +3,12 @@ import btnADD from "./btn_ADD.png";
 import btnCANCLE from "./btn_CANCLE.png";
 import { useState } from "react";
 import AddErrorModal from "../Modal/AddErrorModal.js";
-import AddModal from "../Modal/AddModal.js";
 
 function Task(props){
 
     let copy;
     let todoData;
+    let id=0;
     const [addErrorState, setAddErrorState] = useState(false);
     const [addState, setAddState] = useState(false);
 
@@ -20,7 +20,7 @@ function Task(props){
                     if(e.target.value !== null){
                         todoData = e.target.value;
                         copy = [...props.todoList];
-                        copy.push({id:0, text:todoData, checked:true})
+                        //copy.push({id:id, text:todoData, checked:false})
                         // copy.push(todoData);
                     }                          
                 }}></input>
@@ -29,9 +29,11 @@ function Task(props){
                 /*input에 입력O --> 추가
                 input에 입력X --> 입력하라고 팝업창 띄우기*/
                 if (todoData) {
+                    copy.push({id:id, text:todoData, checked:false});
                     setAddState(!addState)
                     props.setTodoList(copy);
-                    props.setTodoState(true)
+                    props.setTodoState(true);
+                    console.log(props.todoList);
                 }
                 else {
                     setAddErrorState(!addErrorState); }       

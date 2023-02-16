@@ -9,7 +9,7 @@
     position: fixed;
 }
 
-.modal-content {
+.modal_content {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -20,6 +20,19 @@
     border-radius: 20px;
     width: 400px;
     min-width: 400px;
+}
+
+.modal-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.4;
+    background: white;
+    padding: 14px 28px;
+    border-radius: 20px;
+    width: 500px;
+    min-width: 500px;
 }
 
 .confirmBtn {

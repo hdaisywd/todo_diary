@@ -67,7 +67,7 @@ const SignUP = styled.div`
     bottom: 10px;
     `;
     
-function SignUp(){
+export default function SignUp(){
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -132,5 +132,3 @@ function SignUp(){
         </SignUP>
     )
 }
-
-export default SignUp;

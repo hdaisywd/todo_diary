@@ -1,13 +1,13 @@
 import confirmBtn from '../page/confirmBtn.png';
-import "./LoginErrorModal.css";
+import "./AddErrorModal.css";
 
 export default function AddErrorModal(props) {
 
     return(
         <>
         <div className='AddErrorModal'>
-            <div className='overlay'></div>
-            <div className='modal-content'>
+            <div className='overlay_1'></div>
+            <div className='modal_content'>
                 <text className='errorMessage'><br/><br/>TASK를 입력해주세요.<br/>
                 </text>
                 <br/>

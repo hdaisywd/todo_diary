@@ -13,7 +13,7 @@ function TodoList(props){
         <div className='List'>
         <div key={i} className='TodoList'>
 
-            <input type="checkbox" id={i} checked={data.checked} onChange={()=>{
+            <input type="checkbox" id={i} /*checked={data.checked*}*/ onChange={()=>{
                 <onToggle todoList={props.todoList} id={data.id}/>
             }}></input>
 
