@@ -1,0 +1,35 @@
+.overlay_1 {
+    background: rgba(49,49,49,0.8);
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+}
+
+.modal-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.4;
+    background: white;
+    padding: 14px 28px;
+    border-radius: 20px;
+    width: 400px;
+    min-width: 400px;
+}
+
+.confirmBtn {
+    background-color: white;
+    border-color: white;
+    border-style: solid;
+}
+
+.errorMessage {
+    font-weight: bold;
+    font-size:21px;
+    color: rgb(150, 150, 150);
+}

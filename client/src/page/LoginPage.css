@@ -1,0 +1,65 @@
+.Login {
+    text-align: center;
+}
+
+body {
+    background-color: #88f8eba1;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainBox {
+    position: fixed;
+    background-color: white;
+    border-radius: 50px 50px 50px 50px;
+    box-shadow: 5px 5px 20px gray;
+    height: 550px;
+    width: 400px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.welcome {
+    font-weight: bold;
+    font-size: xx-large;
+    color: rgb(150,150,150);
+}
+
+.id {
+    border-color: #64e1f17a;
+    border-radius: 10px;
+    border-style: solid;
+    width: 65%;
+    height: 45px
+}
+
+.loginBtn {
+    background-color: white;
+    border-color: white;
+    border-style: solid;
+    
+}
+
+.joinBtn {
+    font-weight: bold;
+    color: rgb(150,150,150);
+    cursor: pointer;
+    
+}
+
+.joinBtn:hover{
+    color: grey;
+}
+
+.title {
+    position:fixed;
+    font-size: 25px;
+    right: 0%;
+    bottom: 0%;
+    color: #6EE9FA;
+}

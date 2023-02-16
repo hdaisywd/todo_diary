@@ -1,0 +1,54 @@
+.TASK {
+    text-align: center;
+}
+
+.text_Task{
+    font-size: 45px;
+    font-weight: bold;
+    color: #88F8EA;
+}
+
+.taskInput{
+    position: absolute;
+    display: inline-block;
+    border-style: solid;
+    background-color: #88f8eb2d;
+    border-color: #88f8eb98;
+    left: 10%;
+    top: 25%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 23px;
+    border-width: 1px;
+    border-radius: 15px;
+    height: 70px;
+    width: 80%;
+}
+
+.btnADD{
+    position: absolute;
+    border-style: solid;
+    border-color: white;
+    background-color: white;
+    width: 40%;
+    top: 43%;
+    left: 10%;
+}
+
+.imgADD{
+    width: 100%; /*바로 위의 width:40%와 연관되는 듯하다.*/
+}
+
+.btnCANCLE{
+    position: absolute;
+    border-style: solid;
+    border-color: white;
+    background-color: white;
+    width: 40%;
+    top: 43%;
+    right: 10%;
+}
+
+.imgCANCLE{
+    width: 100%;
+}
